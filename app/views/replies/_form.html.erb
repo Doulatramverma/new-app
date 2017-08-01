@@ -1,0 +1,6 @@
+<%= form_for :reply, url: "/blogs/#{@blog.id}/comments/#{comment.id}/replies" do |f| %>
+   <%= f.hidden_field :comment_id,  :value=> comment.id %>
+   <%= f.text_field :body %><br/><br/>
+   <%= f.submit %>
+<% end %>
+

@@ -1,0 +1,26 @@
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+</p>
+ 
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+</p>
+  
+
+
+<p>
+  <%= link_to 'Destroy Comment', [comment.blog, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+
+<h2> reply a comment</h2>
+<% @replies= Reply.where(:comment_id=> comment.id)
+%>
+
+<%@replies.each do |reply|%>
+  <p><strong>Reply:</strong><%=reply.body%></p>
+<%end%>
+<%= render 'replies/form', :comment=>comment %>

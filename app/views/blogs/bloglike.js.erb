@@ -1,0 +1,4 @@
+$(function() { 
+  $('.blog-up-<%=@blog.id%>').text("<%= @blog.get_upvotes.size %>");
+  $('.blog-down-<%=@blog.id%>').text("<%= @blog.get_downvotes.size %>");
+});
