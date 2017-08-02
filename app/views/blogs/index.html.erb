@@ -17,16 +17,17 @@
         <td><%= blog.title %></td>
         <td><%= blog.description %></td>
 
-        <td><%= link_to like_blog_path(blog),:class=> "btn btn-default" do %>
+         <td><%= link_to like_blog_path(blog) , :class=> "btn btn-default" do %>
                            <span class="glyphicon glyphicon-thumbs-up blog-up-<%=blog.id%>" style='width: 50px' >
-                           <%#= blog.get_upvotes.count %>
-                           <% end %>
+                           <%= blog.get_upvotes.count %><% end %>
                         </td>
                         </span>
-                        <td><%= link_to  dislike_blog_path(blog), :class=> "btn btn-default" do %>
+                        <td><%= link_to  dislike_blog_path(blog) , :class=> "btn btn-default" do %>
                            <span class="glyphicon glyphicon-thumbs-down blog-down-<%=blog.id%>" style='width: 50px'>
-                           <%#= blog.get_downvotes.count %>
-                           <% end %>
+                           <%= blog.get_downvotes.count %><% end %>
+                        </td>
+                        </span>
+
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -38,3 +39,9 @@
 <br>
 
 <%= link_to 'New Blog', new_blog_path %>
+
+<br><br><br><br><br><br><br><br>
+
+
+
+

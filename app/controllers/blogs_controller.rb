@@ -6,13 +6,14 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   def index
     @blogs = Blog.all
-
+      
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
     @blog=Blog.find(params[:id])
+    @user=current_user
   end
 
   # GET /blogs/new
@@ -37,7 +38,7 @@ class BlogsController < ApplicationController
    
     redirect_to :back
   end
-  
+
  def friend
 
     if Friendship.where(sender: current_user.id,receiver: params[:id], accept: false).first.present?
@@ -93,14 +94,6 @@ class BlogsController < ApplicationController
       @friends1 = Friendship.where(sender: current_user.id)
     end
   end
-
-
-
-
-
-
-
-
 
 
   # POST /blogs
