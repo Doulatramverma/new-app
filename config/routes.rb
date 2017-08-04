@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  apipie
   devise_for :users
   resources :blogs
   root 'blogs#index'
@@ -18,6 +19,19 @@ Rails.application.routes.draw do
     member do
      get "like", to: "blogs#upvote"
      get "dislike", to: "blogs#downvote"
+    end
+  end
+  namespace :api, :defaults => { :format => 'json' } do
+    namespace :v1 do
+      resources :registrations do
+        post :register_user
+        collection do
+          post :login
+          post :logout
+        end
+      end
+      resources :blogs 
+      resources :comments
     end
   end
 
